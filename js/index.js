@@ -155,8 +155,9 @@ class Wordle {
             this.word = ""
         } else {
             this.word = ""
-            alert("Esta palabra te la acabas de inventar")
+            alert("Esta palabra no me suena")
         }
+        this.checkIfFinished()
     }
 
     addLetter(letter) {
@@ -167,5 +168,25 @@ class Wordle {
     deleteLastLetter() {
         if (this.word.length === 0) return
         this.word = this.word.slice(0, -1)
+    }
+
+    checkIfFinished() {
+        const keyboardNode = document.getElementById("keyboard")
+        const resultNode = document.getElementById("result")
+        const resultMessageNode = document.getElementById("result-message")
+        let resultMessage = ""
+        if (this.previousWords.includes(this.wordToBeGuessed)) {
+            // You won!
+            resultMessage = "¡Has ganado el juego!"
+        } else if (this.previousWords.length === 6) {
+            // You lost!
+            resultMessage = "¡Has perdido el juego!"
+        }
+        if (resultMessage) {
+            keyboardNode.classList.toggle("hidden", true);
+            resultNode.classList.toggle("hidden", false);
+        }
+        resultMessageNode.innerHTML = resultMessage;
+        // You can keep playing
     }
 }

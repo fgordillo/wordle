@@ -57,6 +57,19 @@ h1 {
     margin-bottom: 6px;
 }
 
+#result {
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+}
+#result button {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+}
+
 button {
     border: 0;
     font-size: .75rem;
@@ -81,6 +94,10 @@ button {
 .wrong {
     background-color: gray;
     color: white;
+    pointer-events: none;
+}
+.hidden {
+    display: none !important;
 }
 
 @media only screen and (max-device-width: 640px) {
