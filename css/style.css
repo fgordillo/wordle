@@ -54,9 +54,9 @@ h1 {
 #keyboard div {
     display: flex;
     width: 100%;
-    justify-content: center;
-    gap: 6px;
-    margin-bottom: 6px;
+    justify-content: space-between;
+    gap: 0.2rem;
+    margin-bottom: 0.2rem;
 }
 
 #result {
@@ -75,15 +75,29 @@ h1 {
 button {
     border: 0;
     font-size: .75rem;
-    border-radius: 5px;
+    border-radius: 0.4rem;
     padding: 10px 6px;
     min-width: 2rem;
     background-color: lightgray;
-    flex-shrink: 0;
+    cursor: pointer;
+    transition: background-color 400ms;
+}
+button:hover {
+    background-color: white;
+    outline: 2px lightgray solid;
+    color: black;
 }
 
 .letter {
-    font-size: 1.5rem;
+    font-size: 1rem;
+    flex-grow: 0;
+}
+.wide {
+    flex-grow: 1.5;
+    min-width: 3rem;
+}
+.wide svg {
+    height: 1rem;
 }
 .success {
     background-color: green;
