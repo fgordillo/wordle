@@ -47,10 +47,14 @@ h1 {
 }
 
 #keyboard {
-    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
     min-width: 300px;
     margin: auto auto 2rem;
 }
+
 #keyboard div {
     display: flex;
     width: 100%;
@@ -90,10 +94,10 @@ button:hover {
 
 .letter {
     font-size: 1rem;
-    flex-grow: 0;
+    flex-grow: 1;
 }
 .wide {
-    flex-grow: 1.5;
+    flex-grow: 2;
     min-width: 3rem;
 }
 .wide svg {
@@ -126,13 +130,9 @@ button:hover {
     button {
         min-width: 1.5rem;
         font-size: 0.6rem;
-        padding: 6px 3px;
+        padding: 0.5rem;
     }
     .letter {
         font-size: 1rem;
-    }
-    #keyboard div {
-        gap: 4px;
-        margin-bottom: 4px;
     }
 }
