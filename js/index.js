@@ -1,11 +1,12 @@
 class Wordle {
-  constructor(dictionaryWords) {
+  constructor(dictionaryWords, gtag) {
     this.availableWords = dictionaryWords || [];
     this.keyboard = this.createKeyboard();
     this.word = "";
     this.previousWords = [];
     this.board = this.createBoard();
     this.wordToBeGuessed = this.getRandomWord();
+    this.gtag = gtag;
   }
 
   getRandomWord() {
@@ -158,9 +159,12 @@ class Wordle {
     if (this.word.length < 5) return;
     if (this.availableWords.includes(this.word)) {
       this.previousWords.push(this.word);
+      this.gtag("event", "word_dimension", { word: this.word });
       this.updateKeyboard();
       this.word = "";
     } else {
+      // Sends an event that passes 'age' as a parameter.
+      this.gtag("event", "unknownword_dimension", { unknownword: this.word });
       this.word = "";
       alert("Esta palabra no me suena");
     }

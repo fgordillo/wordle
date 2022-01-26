@@ -7,6 +7,21 @@
     <title>Wordle en Español</title>
     <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="stylesheet" href="./css/style.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYWQVTL9LG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        // Maps 'dimension2' to 'word'.
+        gtag('config', 'G-FYWQVTL9LG', {
+            'custom_map': {
+                'dimension2': 'word',
+                'dimension3': 'unknownword'
+            }
+        });
+    </script>
 </head>
 <body>
     <h1>Wordle en Español</h1>
@@ -21,7 +36,7 @@
     <script src="./js/words.js"></script>
     <script src="./js/index.js"></script>
     <script>
-        new Wordle(words)
+        new Wordle(words, gtag);
     </script>
 </body>
 </html>
