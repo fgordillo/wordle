@@ -7,6 +7,22 @@ class Wordle {
     this.board = this.createBoard();
     this.wordToBeGuessed = this.getRandomWord();
     this.gtag = gtag;
+    this.addKeyboardListeners();
+  }
+
+  addKeyboardListeners() {
+    document.addEventListener("keyup", ({ key }) => {
+      if (key.match(/^[a-zA-Z\u00f1\u00d1]{1}$/)) {
+        this.addLetter(key);
+        this.updateBoard();
+      } else if (key === "Backspace") {
+        this.deleteLastLetter();
+        this.updateBoard();
+      } else if (key === "Enter") {
+        this.validateWord();
+        this.updateBoard();
+      }
+    });
   }
 
   getRandomWord() {
@@ -111,13 +127,14 @@ class Wordle {
   updateKeyboard() {
     for (const letter of this.word) {
       const key = this.keyboard[letter].button;
+      const letterIsRight = this.previousWords.some((word) => {
+        return word.split("").some((l, idx) => {
+          return this.wordToBeGuessed[idx] === l && l === letter;
+        });
+      });
       if (!this.wordToBeGuessed.includes(letter)) {
         key.classList.toggle("wrong", true);
-      } else if (
-        this.word
-          .split("")
-          .some((letter, idx) => this.wordToBeGuessed[idx] === letter)
-      ) {
+      } else if (letterIsRight) {
         key.classList.toggle("success", true);
         key.classList.toggle("warning", false);
       } else {
