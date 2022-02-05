@@ -1,42 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wordle en Español</title>
+    <title>Wordle in Spanish</title>
     <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="stylesheet" href="./css/style.css">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYWQVTL9LG"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
-        // Maps 'dimension2' to 'word'.
-        gtag('config', 'G-FYWQVTL9LG', {
-            'custom_map': {
-                'dimension2': 'word',
-                'dimension3': 'unknownword'
-            }
-        });
-    </script>
 </head>
 <body>
-    <h1>Wordle en Español</h1>
+    <h1>Wordle in Spanish</h1>
     <section id="board" translate="no"></section>
     <section id="keyboard" translate="no"></section>
     <section id="result" class="hidden">
         <span id="result-message"></span>
         <button onclick="location.reload();">
-            Jugar de nuevo
+            Start again
         </button>
     </section>
     <script src="./js/dictionary.js"></script>
     <script src="./js/Wordle.js"></script>
     <script>
-        new Wordle(words, gtag);
+        new Wordle(words);
     </script>
 </body>
 </html>

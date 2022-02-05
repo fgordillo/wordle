@@ -1,12 +1,11 @@
 class Wordle {
-  constructor(dictionaryWords, gtag) {
+  constructor(dictionaryWords) {
     this.availableWords = dictionaryWords || [];
     this.keyboard = this.createKeyboard();
     this.word = "";
     this.previousWords = [];
     this.board = this.createBoard();
     this.wordToBeGuessed = this.getRandomWord();
-    this.gtag = gtag;
     this.addKeyboardListeners();
   }
 
@@ -176,14 +175,11 @@ class Wordle {
     if (this.word.length < 5) return;
     if (this.availableWords.includes(this.word)) {
       this.previousWords.push(this.word);
-      this.gtag("event", "word_dimension", { word: this.word });
       this.updateKeyboard();
       this.word = "";
     } else {
-      // Sends an event that passes 'age' as a parameter.
-      this.gtag("event", "unknownword_dimension", { unknownword: this.word });
       this.word = "";
-      alert("Esta palabra no me suena");
+      alert("This word is not in my dictionary");
     }
     this.checkIfFinished();
   }
@@ -204,11 +200,9 @@ class Wordle {
     const resultMessageNode = document.getElementById("result-message");
     let resultMessage = "";
     if (this.previousWords.includes(this.wordToBeGuessed)) {
-      // You won!
-      resultMessage = "¡Has ganado el juego!";
+      resultMessage = "You win!";
     } else if (this.previousWords.length === 6) {
-      // You lost!
-      resultMessage = "¡Has perdido el juego!";
+      resultMessage = "You lose! Wanna try again?";
     }
     if (resultMessage) {
       keyboardNode.classList.toggle("hidden", true);
