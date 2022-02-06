@@ -13,6 +13,8 @@ Wordle is a very simple game in which people are expected to guess a 5-letter wo
   - <span style="color:yellow;font-weight:800;">Yellow</span> if the letter is in the wrong position
 - You can't use again letters that you tried and don't belong to the word to be guessed. Those letters will be marked in <span style="color:darkgray;font-weight:800">dark gray</span> in the keyboard.
 
+![wordle](./img/screenshot.png)
+
 There are some differences with the original game:
 - The original game is limiting the players to play one game per day using a cookie to store the session. I decided not to implement that so you can play as many times as you feel like.
 - This version doesn't track your answers so you can't see how many games you won or how many attempts you needed.
